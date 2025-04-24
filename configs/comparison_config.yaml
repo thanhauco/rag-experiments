@@ -1,0 +1,26 @@
+# Experiment comparison configuration
+
+name: chunking_comparison
+description: "Compare different chunking strategies with Hybrid Indexing"
+
+chunking:
+  strategy: "semantic"
+  max_sentences: 3
+  chunk_size: 512
+
+indexing:
+  index_type: "hybrid"
+  dense_weight: 0.7
+  sparse_weight: 0.3
+  embedding_model: "all-MiniLM-L6-v2"
+
+retrieval:
+  method: "rrf"
+  top_k: 5
+  rrf_k: 60
+
+evaluation:
+  metrics: ["mrr", "ndcg@5", "recall@5", "hit_rate@1"]
+  track_failures: true
+
+output_dir: "results/chunking_comparison"
